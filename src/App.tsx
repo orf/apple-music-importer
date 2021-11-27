@@ -10,8 +10,9 @@ interface AppProps {
 function App({musicKitInstance}: AppProps) {
   const [signedIn, setSignedIn] = useState(false)
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const isMusickitSetup = musicKitInstance.isAuthorized || signedIn
-
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const signedInHandler = () => {
     setSignedIn(true)
   }

@@ -52,7 +52,11 @@ class SearchManager {
   constructor(musicKit: MusicKitInstance, library: LibraryTrack[]) {
     this.musicKit = musicKit
     this.searchSemaphore = new Sema(10)
-    this.addRateLimit = RateLimit(0.5)
+    // 1 request every 4 seconds... Apple music is lame.
+    this.addRateLimit = RateLimit(0.25, {
+      timeUnit: 1000,
+      uniformDistribution: true,
+    })
     this.library = library
     this.cache = {}
   }

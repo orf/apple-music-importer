@@ -26,15 +26,16 @@ function App({musicKitInstance}: AppProps) {
     return (
       <Container fluid>
         <LibraryUpload musicKitInstance={musicKitInstance}/>
-        <div className="fixed-bottom">
-          <Navbar color="dark">
-            <Container>
-              <Nav className="me-auto">
+        <Navbar color="dark" fixed="bottom">
+          <Container>
+            <Navbar.Collapse className="justify-content-end">
+              <Nav>
                 <Nav.Link target="blank" href="https://tomforb.es">Made by Tom Forbes</Nav.Link>
+                <Nav.Link target="blank" href="https://github.com/orf/apple-music-importer">Source Code</Nav.Link>
               </Nav>
-            </Container>
-          </Navbar>
-        </div>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
       </Container>
     )
   }

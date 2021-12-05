@@ -53,7 +53,7 @@ class SearchManager {
     this.musicKit = musicKit
     this.searchSemaphore = new Sema(10)
     // 1 request every 4 seconds... Apple music is lame.
-    this.addRateLimit = RateLimit(0.25, {
+    this.addRateLimit = RateLimit(0.4, {
       timeUnit: 1000,
       uniformDistribution: true,
     })

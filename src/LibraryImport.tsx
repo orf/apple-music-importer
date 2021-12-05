@@ -13,7 +13,7 @@ function LibraryImport({foundTracks, searcher}: AppProps) {
   const [isImporting, setImporting] = useState(false)
   const [doneChunks, setDoneChunks] = useState(0)
 
-  const chunks = useMemo(() => chunk(foundTracks, 30), [foundTracks]);
+  const chunks = useMemo(() => chunk(foundTracks, 40), [foundTracks]);
 
   useEffect(() => {
     if (!isImporting) return
@@ -31,6 +31,7 @@ function LibraryImport({foundTracks, searcher}: AppProps) {
   if (isImporting) {
     return <div>
       <ProgressBar now={progressDone} label={`Importing Songs: ${progressDone.toFixed(0)}%`}/>
+      <p>This may take a while, Apple Music has very low request limits</p>
     </div>
   } else {
     return <Button variant="primary" onClick={() => setImporting(true)}>Import My Library</Button>

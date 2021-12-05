@@ -100,7 +100,7 @@ function LibraryUpload({musicKitInstance}: AppProps) {
     <Row>
       <Col className="d-flex flex-column min-vh-100 justify-content-center align-items-center">
         <h1>Upload your library.xml file</h1>
-        <p>No credentials leave your browser. Popups may need to be allowed.</p>
+        <p>The file never leaves your browser, and this app is programmed not to judge your taste in music.</p>
         {isLoading
           ? <div><Spinner animation="border" role="status"/></div>
           : <div>

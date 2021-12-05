@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/apple-music-importer/static/css/main.cdd0258c.chunk.css",
+    "main.js": "/apple-music-importer/static/js/main.5490a088.chunk.js",
+    "main.js.map": "/apple-music-importer/static/js/main.5490a088.chunk.js.map",
+    "runtime-main.js": "/apple-music-importer/static/js/runtime-main.866bf4f8.js",
+    "runtime-main.js.map": "/apple-music-importer/static/js/runtime-main.866bf4f8.js.map",
+    "static/css/2.0a9ec390.chunk.css": "/apple-music-importer/static/css/2.0a9ec390.chunk.css",
+    "static/js/2.0729a310.chunk.js": "/apple-music-importer/static/js/2.0729a310.chunk.js",
+    "static/js/2.0729a310.chunk.js.map": "/apple-music-importer/static/js/2.0729a310.chunk.js.map",
+    "index.html": "/apple-music-importer/index.html",
+    "static/css/2.0a9ec390.chunk.css.map": "/apple-music-importer/static/css/2.0a9ec390.chunk.css.map",
+    "static/css/main.cdd0258c.chunk.css.map": "/apple-music-importer/static/css/main.cdd0258c.chunk.css.map",
+    "static/js/2.0729a310.chunk.js.LICENSE.txt": "/apple-music-importer/static/js/2.0729a310.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.866bf4f8.js",
+    "static/css/2.0a9ec390.chunk.css",
+    "static/js/2.0729a310.chunk.js",
+    "static/css/main.cdd0258c.chunk.css",
+    "static/js/main.5490a088.chunk.js"
+  ]
+}

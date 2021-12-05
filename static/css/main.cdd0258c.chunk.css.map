@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,KACI,qBAAsB,CACtB,WACJ,CAEA,0BACI,WAAY,CACZ,QACF","file":"main.cdd0258c.chunk.css","sourcesContent":["body {\n    background-color: gray;\n    height: 100%;\n}\n\nhtml, body, #root, #root>div {\n    height: 100%;\n    margin: 0;\n  }\n"]}

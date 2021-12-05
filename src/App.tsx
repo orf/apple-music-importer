@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 import MusicKitInstance = MusicKit.MusicKitInstance
-import {Container} from "react-bootstrap"
+import {Container, Nav, Navbar, NavbarBrand} from "react-bootstrap"
 import Login from "./Login"
 import LibraryUpload from "./LibraryUpload"
 
@@ -26,6 +26,15 @@ function App({musicKitInstance}: AppProps) {
     return (
       <Container fluid>
         <LibraryUpload musicKitInstance={musicKitInstance}/>
+        <div className="fixed-bottom">
+          <Navbar color="dark">
+            <Container>
+              <Nav className="me-auto">
+                <Nav.Link target="blank" href="https://tomforb.es">Made by Tom Forbes</Nav.Link>
+              </Nav>
+            </Container>
+          </Navbar>
+        </div>
       </Container>
     )
   }

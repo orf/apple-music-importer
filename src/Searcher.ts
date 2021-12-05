@@ -1,5 +1,5 @@
 import MusicKitInstance = MusicKit.MusicKitInstance
-import {Sema} from "async-sema"
+import {Sema, RateLimit} from "async-sema"
 import {LibraryTrack} from "./LibraryUpload"
 import {Dispatch, SetStateAction} from "react"
 
@@ -42,26 +42,33 @@ type SearchResult = FoundTrack | NotFoundTrack;
 
 
 class SearchManager {
-  private readonly musicKit: MusicKitInstance
-  private readonly requestSemaphore: Sema
+  readonly musicKit: MusicKitInstance
   readonly library: LibraryTrack[]
+
+  private readonly searchSemaphore: Sema
+  private readonly addRateLimit: (() => Promise<void>)
+  private readonly cache: Record<string, SearchResult>
 
   constructor(musicKit: MusicKitInstance, library: LibraryTrack[]) {
     this.musicKit = musicKit
-    this.requestSemaphore = new Sema(10)
+    this.searchSemaphore = new Sema(10)
+    this.addRateLimit = RateLimit(0.5)
     this.library = library
+    this.cache = {}
+  }
+
+  async import(ids: string[]) {
+    await this.addRateLimit()
+    await this.musicKit.api.addToLibrary({songs: ids})
   }
 
   async startSearching(foundCallback: Dispatch<SetStateAction<FoundTrack[]>>, notFoundCallback: Dispatch<SetStateAction<NotFoundTrack[]>>) {
-    console.log("Start Searching Called!!")
-
     foundCallback([])
     notFoundCallback([])
 
     const promises = this.library.map((track) => {
       return this.search(track).then(
         (trackResult) => {
-          console.log(trackResult);
           if (trackResult instanceof FoundTrack) {
             foundCallback((prev) => [...prev, trackResult])
           } else {
@@ -74,18 +81,28 @@ class SearchManager {
   }
 
   private async search(track: LibraryTrack): Promise<SearchResult> {
-    const token = await this.requestSemaphore.acquire()
-    try {
-      const searchString = `${track.Name} - ${track.Album} - ${track.Artist}`
-      console.log("Searching for", searchString)
-      const result = await this.doSearch(searchString, track)
-      if (result == null) {
-        return new NotFoundTrack(track)
-      }
-      return result
+    if (track.LibraryId in this.cache) {
+      return this.cache[track.LibraryId]
+    }
 
+    const token = await this.searchSemaphore.acquire()
+    try {
+      const searches = [
+        `${track.Name} - ${track.Album} - ${track.Artist}`,
+        `${track.Name} -  ${track.Artist}`
+      ]
+      for (const search of searches) {
+        const result = await this.doSearch(search, track)
+        if (result != null) {
+          this.cache[track.LibraryId] = result
+          return result
+        }
+      }
+      const result = new NotFoundTrack(track)
+      this.cache[track.LibraryId] = result
+      return result
     } finally {
-      await this.requestSemaphore.release(token)
+      await this.searchSemaphore.release(token)
     }
   }
 

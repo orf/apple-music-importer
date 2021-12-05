@@ -3,7 +3,7 @@ import sys
 import pathlib
 from datetime import datetime, timedelta
 
-token_exp_time = datetime.now() + timedelta(days=30)
+token_exp_time = datetime.now() + timedelta(days=30 * 5)
 
 payload = {
     'iss': "DAT5UMZYM7",  # issuer

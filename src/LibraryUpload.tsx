@@ -92,7 +92,7 @@ function LibraryUpload({musicKitInstance}: AppProps) {
   }
 
   if (library != null && !isLoading && !error) {
-    const manager = new SearchManager(musicKitInstance, library.slice(0, 250));
+    const manager = new SearchManager(musicKitInstance, library);
     return <LibraryDisplay musicKitInstance={musicKitInstance} searchManager={manager}/>
   }
 

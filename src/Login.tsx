@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Button, Col, Container, Row} from "react-bootstrap"
+import {Button, Col, Row} from "react-bootstrap"
 
 interface AppProps {
   callback: () => void;

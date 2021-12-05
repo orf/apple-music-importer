@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 import MusicKitInstance = MusicKit.MusicKitInstance
-import {Container, Nav, Navbar, NavbarBrand} from "react-bootstrap"
+import {Container, Nav, Navbar} from "react-bootstrap"
 import Login from "./Login"
 import LibraryUpload from "./LibraryUpload"
 

@@ -6,4 +6,4 @@ https://orf.github.io/apple-music-importer/
 
 ## Screenshots
 
-![](./screenshots/initial.png)
+![](./screenshots/initial.jpg)

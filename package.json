@@ -4,6 +4,8 @@
   "private": true,
   "homepage": "https://orf.github.io/apple-music-importer/",
   "dependencies": {
+    "@sentry/react": "^6.15.0",
+    "@sentry/tracing": "^6.15.0",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",

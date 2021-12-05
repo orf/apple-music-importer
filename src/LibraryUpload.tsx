@@ -92,7 +92,7 @@ function LibraryUpload({musicKitInstance}: AppProps) {
   }
 
   if (library != null && !isLoading && !error) {
-    const manager = new SearchManager(musicKitInstance, library);
+    const manager = new SearchManager(musicKitInstance, library)
     return <LibraryDisplay musicKitInstance={musicKitInstance} searchManager={manager}/>
   }
 
@@ -110,8 +110,8 @@ function LibraryUpload({musicKitInstance}: AppProps) {
               <p>The Error thrown was: {error.toString()}</p>
             </Alert>}
             <Form.Group controlId="formFile" className="mb-3">
-                <Form.Control type="file" onChange={onUpload}/>
-              </Form.Group>
+              <Form.Control type="file" onChange={onUpload}/>
+            </Form.Group>
           </div>
         }
       </Col>
